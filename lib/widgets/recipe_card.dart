@@ -36,7 +36,7 @@ class RecipeCard extends StatelessWidget {
               padding: const EdgeInsets.all(10.0),
               child: Text(
                 recipeName,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
                 ),
@@ -53,7 +53,7 @@ class RecipeCard extends StatelessWidget {
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent),
-              child: Text('View Recipe'),
+              child: const Text('View Recipe'),
             ),
           ],
         ),

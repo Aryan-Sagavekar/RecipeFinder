@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_finder/helpers/recipe_model.dart';
+import 'package:recipe_finder/helpers/recipe_service.dart';
 import '../widgets/recipe_card.dart'; // Import the RecipeCard widget
 
 class SearchPage extends StatefulWidget {
@@ -9,12 +11,30 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController _searchController = TextEditingController();
   List<String> recentSearches = ['Pasta', 'Salmon', 'Chicken Curry'];
+  final RecipeService _recipeService = RecipeService();
+  List<Recipe> _searchResults = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _loadRecipes();
+  }
+
+  Future<void> _loadRecipes() async {
+    await _recipeService.loadRecipes();
+  }
+
+  void _updateSearchResults(String query) {
+    setState(() {
+      _searchResults = _recipeService.searchRecipes(query);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Search Recipes'),
+        title: const Text('Search Recipes'),
         backgroundColor: Colors.greenAccent,
         centerTitle: true,
       ),
@@ -26,42 +46,42 @@ class _SearchPageState extends State<SearchPage> {
             // Search Bar
             TextField(
               controller: _searchController,
+              onChanged: (query) => _updateSearchResults(query),
               decoration: const InputDecoration(
                 hintText: 'Search for recipes...',
                 border: OutlineInputBorder(),
                 prefixIcon: Icon(Icons.search),
               ),
             ),
-            SizedBox(height: 20),
-
-            const Text(
-              'Recent Searches:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-            const SizedBox(height: 10),
-            _buildRecentSearches(),
-
+            if (_searchController.text != "") _buildSearchResults(),
             const SizedBox(height: 20),
-
-            const Text(
-              'Suggested Recipes:',
-              style: TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.bold,
+            if (_searchController.text == "")
+              const Text(
+                'Recent Searches:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-            SizedBox(height: 10),
-            _buildSuggestedRecipes(),
+            const SizedBox(height: 10),
+            if (_searchController.text == "") _buildRecentSearches(),
+            if (_searchController.text == "") const SizedBox(height: 20),
+            if (_searchController.text == "")
+              const Text(
+                'Suggested Recipes:',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            if (_searchController.text == "") SizedBox(height: 10),
+            if (_searchController.text == "") _buildSuggestedRecipes(),
           ],
         ),
       ),
     );
   }
 
-  // Display a list of recent searches
   Widget _buildRecentSearches() {
     return Container(
       height: 40,
@@ -87,7 +107,7 @@ class _SearchPageState extends State<SearchPage> {
               child: Center(
                 child: Text(
                   recentSearches[index],
-                  style: TextStyle(color: Colors.black),
+                  style: const TextStyle(color: Colors.black),
                 ),
               ),
             ),
@@ -114,6 +134,21 @@ class _SearchPageState extends State<SearchPage> {
             imageLoc: 'assets/images/grilledsalmon.png',
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildSearchResults() {
+    return Expanded(
+      child: Container(
+        child: ListView.builder(
+          itemCount: _searchResults.length,
+          itemBuilder: (context, index) {
+            return RecipeCard(
+                recipeName: _searchResults[index].name,
+                imageLoc: _searchResults[index].imageUrl);
+          },
+        ),
       ),
     );
   }

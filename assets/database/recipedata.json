@@ -1,0 +1,84 @@
+[
+    {
+        "id": 1,
+        "name": "Grilled Salmon",
+        "ingredients": [
+            "salmon fillets",
+            "olive oil",
+            "lemon",
+            "garlic",
+            "salt",
+            "pepper"
+        ],
+        "steps": [
+            "Preheat grill to medium heat.",
+            "Brush salmon fillets with olive oil.",
+            "Season with salt, pepper, and garlic.",
+            "Grill salmon for 6-8 minutes on each side until opaque.",
+            "Serve with a squeeze of fresh lemon."
+        ]
+    },
+    {
+        "id": 2,
+        "name": "Spaghetti Carbonara",
+        "ingredients": [
+            "spaghetti",
+            "eggs",
+            "parmesan cheese",
+            "guanciale",
+            "black pepper",
+            "salt"
+        ],
+        "steps": [
+            "Boil pasta in salted water according to package instructions.",
+            "In a bowl, whisk together eggs and grated parmesan cheese.",
+            "Cook guanciale in a skillet until crispy.",
+            "Drain pasta and reserve some pasta water.",
+            "Toss pasta with guanciale, egg mixture, and some reserved pasta water.",
+            "Season with black pepper and serve."
+        ]
+    },
+    {
+        "id": 3,
+        "name": "Chicken Curry",
+        "ingredients": [
+            "chicken",
+            "onion",
+            "tomatoes",
+            "garlic",
+            "ginger",
+            "curry powder",
+            "coconut milk",
+            "cilantro"
+        ],
+        "steps": [
+            "Sauté onions, garlic, and ginger in a large pot.",
+            "Add chicken pieces and cook until browned.",
+            "Stir in curry powder and tomatoes, cooking until soft.",
+            "Pour in coconut milk and simmer for 20 minutes.",
+            "Garnish with fresh cilantro and serve with rice."
+        ]
+    },
+    {
+        "id": 4,
+        "name": "Paneer Tikka",
+        "ingredients": [
+            "paneer",
+            "yogurt",
+            "ginger-garlic paste",
+            "garam masala",
+            "cumin",
+            "turmeric",
+            "lemon juice",
+            "salt",
+            "pepper"
+        ],
+        "steps": [
+            "In a bowl, mix yogurt, ginger-garlic paste, spices, and lemon juice.",
+            "Marinate paneer cubes in the mixture for 1 hour.",
+            "Thread paneer onto skewers.",
+            "Grill or bake at high heat until charred.",
+            "Serve with chutney and lemon wedges."
+        ]
+    }
+]
