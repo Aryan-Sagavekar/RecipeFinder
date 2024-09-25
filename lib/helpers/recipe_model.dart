@@ -19,6 +19,7 @@ class Recipe {
     return Recipe(
       id: json['id'],
       name: json['name'],
+      imageUrl: json['imageLoc'],
       ingredients: List<String>.from(json['ingredients']),
       steps: List<String>.from(json['steps']),
     );

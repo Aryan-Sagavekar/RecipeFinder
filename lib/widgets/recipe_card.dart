@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_finder/helpers/recipe_model.dart';
+import 'package:recipe_finder/helpers/recipe_service.dart';
 import 'package:recipe_finder/screens/recipe_screen.dart';
 
-class RecipeCard extends StatelessWidget {
+class RecipeCard extends StatefulWidget {
   final String recipeName;
   final String imageLoc;
 
@@ -9,6 +11,26 @@ class RecipeCard extends StatelessWidget {
     required this.recipeName,
     required this.imageLoc,
   });
+
+  @override
+  State<RecipeCard> createState() => _RecipeCardState();
+}
+
+class _RecipeCardState extends State<RecipeCard> {
+  RecipeService _recipeService = RecipeService();
+  late Recipe _searchResult;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchRecipe();
+  }
+
+  void _fetchRecipe() {
+    setState(() {
+      _searchResult = _recipeService.searchOneRecipe(widget.recipeName);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -29,13 +51,13 @@ class RecipeCard extends StatelessWidget {
                 width: 200,
                 height: 150,
                 fit: BoxFit.fill,
-                image: AssetImage(imageLoc),
+                image: AssetImage(widget.imageLoc),
               ),
             ),
             Padding(
               padding: const EdgeInsets.all(10.0),
               child: Text(
-                recipeName,
+                widget.recipeName,
                 style: const TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 16,
@@ -49,7 +71,11 @@ class RecipeCard extends StatelessWidget {
                     context,
                     MaterialPageRoute(
                         builder: (context) => RecipeDetails(
-                            recipeName: recipeName, imageLoc: imageLoc)))
+                              recipeName: _searchResult.name,
+                              imageLoc: _searchResult.imageUrl,
+                              ingredients: _searchResult.ingredients,
+                              steps: _searchResult.steps,
+                            )))
               },
               style:
                   ElevatedButton.styleFrom(backgroundColor: Colors.greenAccent),

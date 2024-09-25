@@ -3,30 +3,14 @@ import 'package:flutter/material.dart';
 class RecipeDetails extends StatelessWidget {
   final String recipeName;
   final String imageLoc;
-  late List<String> ingredients;
-  late List<String> steps;
+  final List<String> ingredients;
+  final List<String> steps;
 
   RecipeDetails({
     required this.recipeName,
     required this.imageLoc,
-    this.ingredients = const [
-      "lemon",
-      "garlic",
-      "Salmon",
-      "water",
-      "mint",
-      "chilli"
-    ],
-    this.steps = const [
-      "Preheat the grill to medium-high heat.",
-      "Brush the salmon fillets with olive oil on both sides.",
-      "Season the fillets with salt and pepper.",
-      "Place the salmon fillets skin-side down on the grill.",
-      "Grill for about 6-8 minutes, depending on the thickness of the fillets.",
-      "Flip the salmon carefully and grill for another 2-4 minutes, or until the salmon is cooked through.",
-      "Remove from the grill and let it rest for a couple of minutes.",
-      "Serve with lemon wedges and your favorite side dishes."
-    ],
+    required this.ingredients,
+    required this.steps,
   });
 
   @override
@@ -51,10 +35,10 @@ class RecipeDetails extends StatelessWidget {
                   image: AssetImage(imageLoc),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
 
               // Ingredients Section
-              Text(
+              const Text(
                 'Ingredients',
                 style: TextStyle(
                   fontSize: 22,

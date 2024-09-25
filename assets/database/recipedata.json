@@ -1,84 +1,245 @@
-[
-    {
-        "id": 1,
-        "name": "Grilled Salmon",
-        "ingredients": [
-            "salmon fillets",
-            "olive oil",
-            "lemon",
-            "garlic",
-            "salt",
-            "pepper"
-        ],
-        "steps": [
-            "Preheat grill to medium heat.",
-            "Brush salmon fillets with olive oil.",
-            "Season with salt, pepper, and garlic.",
-            "Grill salmon for 6-8 minutes on each side until opaque.",
-            "Serve with a squeeze of fresh lemon."
-        ]
-    },
-    {
-        "id": 2,
-        "name": "Spaghetti Carbonara",
-        "ingredients": [
-            "spaghetti",
-            "eggs",
-            "parmesan cheese",
-            "guanciale",
-            "black pepper",
-            "salt"
-        ],
-        "steps": [
-            "Boil pasta in salted water according to package instructions.",
-            "In a bowl, whisk together eggs and grated parmesan cheese.",
-            "Cook guanciale in a skillet until crispy.",
-            "Drain pasta and reserve some pasta water.",
-            "Toss pasta with guanciale, egg mixture, and some reserved pasta water.",
-            "Season with black pepper and serve."
-        ]
-    },
-    {
-        "id": 3,
-        "name": "Chicken Curry",
-        "ingredients": [
-            "chicken",
-            "onion",
-            "tomatoes",
-            "garlic",
-            "ginger",
-            "curry powder",
-            "coconut milk",
-            "cilantro"
-        ],
-        "steps": [
-            "Sauté onions, garlic, and ginger in a large pot.",
-            "Add chicken pieces and cook until browned.",
-            "Stir in curry powder and tomatoes, cooking until soft.",
-            "Pour in coconut milk and simmer for 20 minutes.",
-            "Garnish with fresh cilantro and serve with rice."
-        ]
-    },
-    {
-        "id": 4,
-        "name": "Paneer Tikka",
-        "ingredients": [
-            "paneer",
-            "yogurt",
-            "ginger-garlic paste",
-            "garam masala",
-            "cumin",
-            "turmeric",
-            "lemon juice",
-            "salt",
-            "pepper"
-        ],
-        "steps": [
-            "In a bowl, mix yogurt, ginger-garlic paste, spices, and lemon juice.",
-            "Marinate paneer cubes in the mixture for 1 hour.",
-            "Thread paneer onto skewers.",
-            "Grill or bake at high heat until charred.",
-            "Serve with chutney and lemon wedges."
-        ]
-    }
-]
+{
+    "recipes": [
+        {
+            "id": 1,
+            "name": "Grilled Salmon",
+            "imageLoc": "assets/images/grilledsalmon.png",
+            "ingredients": [
+                "salmon fillets",
+                "olive oil",
+                "lemon",
+                "garlic",
+                "salt",
+                "pepper"
+            ],
+            "steps": [
+                "Preheat grill to medium heat.",
+                "Brush salmon fillets with olive oil.",
+                "Season with salt, pepper, and garlic.",
+                "Grill salmon for 6-8 minutes on each side until opaque.",
+                "Serve with a squeeze of fresh lemon."
+            ]
+        },
+        {
+            "id": 2,
+            "name": "Spaghetti Carbonara",
+            "imageLoc": "assets/images/spaghetti.png",
+            "ingredients": [
+                "spaghetti",
+                "eggs",
+                "parmesan cheese",
+                "guanciale",
+                "black pepper",
+                "salt"
+            ],
+            "steps": [
+                "Boil pasta in salted water according to package instructions.",
+                "In a bowl, whisk together eggs and grated parmesan cheese.",
+                "Cook guanciale in a skillet until crispy.",
+                "Drain pasta and reserve some pasta water.",
+                "Toss pasta with guanciale, egg mixture, and some reserved pasta water.",
+                "Season with black pepper and serve."
+            ]
+        },
+        {
+            "id": 3,
+            "name": "Chicken Curry",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "chicken",
+                "onion",
+                "tomatoes",
+                "garlic",
+                "ginger",
+                "curry powder",
+                "coconut milk",
+                "cilantro"
+            ],
+            "steps": [
+                "Sauté onions, garlic, and ginger in a large pot.",
+                "Add chicken pieces and cook until browned.",
+                "Stir in curry powder and tomatoes, cooking until soft.",
+                "Pour in coconut milk and simmer for 20 minutes.",
+                "Garnish with fresh cilantro and serve with rice."
+            ]
+        },
+        {
+            "id": 4,
+            "name": "Paneer Tikka",
+            "imageLoc": "assets/images/paneer.png",
+            "ingredients": [
+                "paneer",
+                "yogurt",
+                "ginger-garlic paste",
+                "garam masala",
+                "cumin",
+                "turmeric",
+                "lemon juice",
+                "salt",
+                "pepper"
+            ],
+            "steps": [
+                "In a bowl, mix yogurt, ginger-garlic paste, spices, and lemon juice.",
+                "Marinate paneer cubes in the mixture for 1 hour.",
+                "Thread paneer onto skewers.",
+                "Grill or bake at high heat until charred.",
+                "Serve with chutney and lemon wedges."
+            ]
+        },
+        {
+            "id": 5,
+            "name": "Butter Chicken",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "500g boneless chicken",
+                "2 tbsp butter",
+                "1 cup tomato puree",
+                "1 cup cream",
+                "1 tbsp ginger garlic paste",
+                "1 tsp garam masala",
+                "1 tsp red chili powder",
+                "Salt to taste",
+                "1 tbsp kasuri methi",
+                "1 tbsp lemon juice"
+            ],
+            "steps": [
+                "Marinate chicken with ginger garlic paste, lemon juice, salt, and red chili powder. Set aside for 30 minutes.",
+                "Heat butter in a pan, add marinated chicken, and cook until browned.",
+                "Add tomato puree and cook until the oil separates.",
+                "Add cream, garam masala, and kasuri methi, and simmer for 10 minutes.",
+                "Serve with naan or rice."
+            ]
+        },
+        {
+            "id": 6,
+            "name": "Palak Paneer",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "250g paneer",
+                "2 cups spinach",
+                "1 onion",
+                "2 tomatoes",
+                "1 tsp ginger garlic paste",
+                "1 tsp cumin seeds",
+                "1 tsp garam masala",
+                "1 tsp turmeric powder",
+                "1 tbsp cream",
+                "Salt to taste"
+            ],
+            "steps": [
+                "Blanch spinach in boiling water and puree it.",
+                "Heat oil in a pan, add cumin seeds and ginger garlic paste, and sauté until fragrant.",
+                "Add chopped onions and cook until golden.",
+                "Add chopped tomatoes, turmeric powder, and garam masala, and cook until oil separates.",
+                "Stir in spinach puree and cook for 5 minutes.",
+                "Add paneer cubes and simmer for 5 minutes. Stir in cream before serving."
+            ]
+        },
+        {
+            "id": 7,
+            "name": "Chole Bhature",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "1 cup chickpeas (soaked overnight)",
+                "2 onions",
+                "2 tomatoes",
+                "1 tbsp ginger garlic paste",
+                "1 tsp cumin seeds",
+                "1 tsp garam masala",
+                "1 tsp turmeric powder",
+                "1 tsp red chili powder",
+                "1 tsp chole masala",
+                "2 cups flour",
+                "1/2 cup yogurt",
+                "Salt to taste"
+            ],
+            "steps": [
+                "Pressure cook soaked chickpeas until soft.",
+                "Heat oil in a pan, add cumin seeds and ginger garlic paste, and sauté until golden.",
+                "Add chopped onions and cook until brown.",
+                "Add tomatoes, turmeric, red chili powder, chole masala, and garam masala, and cook until oil separates.",
+                "Add cooked chickpeas and simmer for 10 minutes.",
+                "For bhature, mix flour, yogurt, and salt into a dough. Roll and deep fry until golden.",
+                "Serve chole with hot bhature."
+            ]
+        },
+        {
+            "id": 8,
+            "name": "Masala Dosa",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "2 cups dosa batter",
+                "4 boiled potatoes",
+                "1 onion",
+                "1 tsp mustard seeds",
+                "1 tsp turmeric powder",
+                "1 tsp cumin seeds",
+                "1 tsp urad dal",
+                "Curry leaves",
+                "2 green chilies",
+                "Salt to taste"
+            ],
+            "steps": [
+                "Heat oil in a pan, add mustard seeds, cumin seeds, urad dal, curry leaves, and green chilies.",
+                "Add chopped onions and sauté until golden.",
+                "Mash boiled potatoes, add turmeric and salt, and cook for 5 minutes.",
+                "Spread dosa batter on a hot tawa to make thin crepes.",
+                "Place potato filling in the center of the dosa and fold.",
+                "Serve with coconut chutney and sambar."
+            ]
+        },
+        {
+            "id": 9,
+            "name": "Aloo Paratha",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "2 cups wheat flour",
+                "4 boiled potatoes",
+                "1 onion",
+                "2 green chilies",
+                "1 tsp cumin seeds",
+                "1 tsp garam masala",
+                "1 tsp red chili powder",
+                "Salt to taste",
+                "Butter or ghee"
+            ],
+            "steps": [
+                "Knead wheat flour with water into a dough and let it rest for 15 minutes.",
+                "Mash boiled potatoes and mix with chopped onions, green chilies, cumin seeds, garam masala, red chili powder, and salt.",
+                "Divide the dough into balls, roll out each ball, and stuff with potato filling.",
+                "Seal and roll out the stuffed dough into parathas.",
+                "Cook on a hot tawa with butter or ghee until golden brown.",
+                "Serve hot with curd or pickle."
+            ]
+        },
+        {
+            "id": 10,
+            "name": "Biryani",
+            "imageLoc": "assets/images/chicken.png",
+            "ingredients": [
+                "500g basmati rice",
+                "500g chicken",
+                "2 onions",
+                "1 tbsp ginger garlic paste",
+                "1 tsp garam masala",
+                "1 tsp turmeric powder",
+                "2 bay leaves",
+                "4 cloves",
+                "4 green cardamoms",
+                "1 cup yogurt",
+                "Fresh coriander",
+                "Saffron strands",
+                "Salt to taste"
+            ],
+            "steps": [
+                "Marinate chicken with yogurt, ginger garlic paste, turmeric powder, garam masala, and salt. Set aside for 1 hour.",
+                "Cook basmati rice with bay leaves, cloves, and cardamoms until 70% done.",
+                "Fry sliced onions until crispy and golden brown.",
+                "Layer marinated chicken, rice, and fried onions in a large pot.",
+                "Dissolve saffron in warm milk and pour over the rice.",
+                "Cook on low heat for 20-25 minutes until chicken is tender and rice is fully cooked.",
+                "Garnish with fresh coriander and serve with raita."
+            ]
+        }
+    ]
+}

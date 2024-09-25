@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipe_finder/helpers/recipe_service.dart';
 import 'package:recipe_finder/screens/search_screen.dart';
 import '../widgets/recipe_card.dart';
 
@@ -9,6 +10,17 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _ingredientController = TextEditingController();
+  RecipeService _recipeService = RecipeService();
+
+  @override
+  void initState() {
+    super.initState();
+    _loadRecipes();
+  }
+
+  Future<void> _loadRecipes() async {
+    await _recipeService.loadRecipes();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -98,8 +110,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
   // Horizontal scrollable popular recipes section
   Widget _buildPopularRecipes() {
+    if (RecipeService.recipes.isEmpty) {
+      return CircularProgressIndicator();
+    }
+
     return Container(
-      height: 250, // Control height of horizontal list
+      height: 250,
       child: ListView(
         scrollDirection: Axis.horizontal,
         children: [
