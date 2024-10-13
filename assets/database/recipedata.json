@@ -3,7 +3,7 @@
         {
             "id": 1,
             "name": "Grilled Salmon",
-            "imageLoc": "assets/images/grilledsalmon.png",
+            "imageLoc": "assets/images/grilled salmon.png",
             "ingredients": [
                 "salmon fillets",
                 "olive oil",
@@ -23,7 +23,7 @@
         {
             "id": 2,
             "name": "Spaghetti Carbonara",
-            "imageLoc": "assets/images/spaghetti.png",
+            "imageLoc": "assets/images/spaghetti carbonara.png",
             "ingredients": [
                 "spaghetti",
                 "eggs",
@@ -44,7 +44,7 @@
         {
             "id": 3,
             "name": "Chicken Curry",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/chicken curry.png",
             "ingredients": [
                 "chicken",
                 "onion",
@@ -66,7 +66,7 @@
         {
             "id": 4,
             "name": "Paneer Tikka",
-            "imageLoc": "assets/images/paneer.png",
+            "imageLoc": "assets/images/paneer tikka.png",
             "ingredients": [
                 "paneer",
                 "yogurt",
@@ -89,7 +89,7 @@
         {
             "id": 5,
             "name": "Butter Chicken",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/butter chicken.png",
             "ingredients": [
                 "500g boneless chicken",
                 "2 tbsp butter",
@@ -113,7 +113,7 @@
         {
             "id": 6,
             "name": "Palak Paneer",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/palak paneer.png",
             "ingredients": [
                 "250g paneer",
                 "2 cups spinach",
@@ -138,7 +138,7 @@
         {
             "id": 7,
             "name": "Chole Bhature",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/chole bhature.png",
             "ingredients": [
                 "1 cup chickpeas (soaked overnight)",
                 "2 onions",
@@ -166,7 +166,7 @@
         {
             "id": 8,
             "name": "Masala Dosa",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/masala dosa.png",
             "ingredients": [
                 "2 cups dosa batter",
                 "4 boiled potatoes",
@@ -191,7 +191,7 @@
         {
             "id": 9,
             "name": "Aloo Paratha",
-            "imageLoc": "assets/images/chicken.png",
+            "imageLoc": "assets/images/aloo paratha.png",
             "ingredients": [
                 "2 cups wheat flour",
                 "4 boiled potatoes",
@@ -214,8 +214,8 @@
         },
         {
             "id": 10,
-            "name": "Biryani",
-            "imageLoc": "assets/images/chicken.png",
+            "name": "Chicken Biryani",
+            "imageLoc": "assets/images/chicken biryani.png",
             "ingredients": [
                 "500g basmati rice",
                 "500g chicken",

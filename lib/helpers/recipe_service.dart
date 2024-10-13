@@ -1,32 +1,36 @@
-import 'dart:convert';
-import 'package:flutter/services.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 import 'package:recipe_finder/helpers/recipe_model.dart';
 
 class RecipeService {
   static List<Recipe> recipes = [];
-  Recipe recipeNull = Recipe(
+  static int lastId = 10;
+  static Recipe recipeNull = Recipe(
       id: 1,
       name: "Chicken Curry",
+      imageUrl: "assets/images/chicken curry.png",
       ingredients: ["chicken", "lemon"],
       steps: ["Make chicken ez"]);
 
-  Future<void> loadRecipes() async {
-    final String response =
-        await rootBundle.loadString('assets/database/recipedata.json');
-    final data = await json.decode(response);
+  static Future<void> loadRecipes() async {
+    var recipeBox = await Hive.openBox<Recipe>('recipes');
 
-    if (data != null && data['recipes'] != null) {
-      recipes = (data['recipes'] as List)
-          .map((recipeJson) => Recipe.fromJson(recipeJson))
-          .toList();
+    if (recipeBox.isNotEmpty) {
+      recipes = recipeBox.values.toList();
+
+      lastId = recipes.length;
+
+      print("Loaded recipes: ${recipes.length}");
+    } else {
+      print("No recipes found in Hive.");
     }
-
-    print(
-        "Loaded recipes: ${recipes.length}"); // Check how many recipes are loaded
   }
 
-  List<Recipe> searchRecipes(String query) {
-    return recipes
+  static Future<List<Recipe>> searchRecipes(String query) async {
+    var box = await Hive.openBox<Recipe>('recipes');
+
+    List<Recipe> hiveRecipes = box.values.toList();
+
+    return hiveRecipes
         .where((recipe) =>
             recipe.name.toLowerCase().contains(query.toLowerCase()) ||
             recipe.ingredients.any((ingredient) =>
@@ -34,13 +38,15 @@ class RecipeService {
         .toList();
   }
 
-  Recipe searchOneRecipe(String query) {
-    if (recipes.isEmpty) {
-      print("No recipes loaded!");
+  static Future<Recipe> searchOneRecipe(String query) async {
+    var recipeBox = await Hive.openBox<Recipe>('recipes');
+
+    if (recipeBox.isEmpty) {
+      print("No recipes loaded in Hive!");
       return recipeNull;
     }
 
-    var filteredRecipes = recipes
+    var filteredRecipes = recipeBox.values
         .where(
             (recipe) => recipe.name.toLowerCase().contains(query.toLowerCase()))
         .toList();
@@ -51,5 +57,13 @@ class RecipeService {
       print("No matching recipe found for query: $query");
       return recipeNull;
     }
+  }
+
+  static Future<void> saveNewRecipe(Recipe newRecipe) async {
+    var recipeBox = await Hive.openBox<Recipe>('recipes');
+
+    await recipeBox.add(newRecipe);
+
+    print("Recipe saved successfully in Hive!");
   }
 }

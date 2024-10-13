@@ -11,7 +11,6 @@ class SearchPage extends StatefulWidget {
 class _SearchPageState extends State<SearchPage> {
   final TextEditingController _searchController = TextEditingController();
   List<String> recentSearches = ['Pasta', 'Salmon', 'Chicken Curry'];
-  final RecipeService _recipeService = RecipeService();
   List<Recipe> _searchResults = [];
 
   @override
@@ -21,13 +20,13 @@ class _SearchPageState extends State<SearchPage> {
   }
 
   Future<void> _loadRecipes() async {
-    await _recipeService.loadRecipes();
+    await RecipeService.loadRecipes();
   }
 
-  void _updateSearchResults(String query) {
-    setState(() {
-      _searchResults = _recipeService.searchRecipes(query);
-    });
+  void _updateSearchResults(String query) async {
+    _searchResults = [];
+    _searchResults = await RecipeService.searchRecipes(query);
+    setState(() {});
   }
 
   @override
@@ -123,15 +122,15 @@ class _SearchPageState extends State<SearchPage> {
         children: [
           RecipeCard(
             recipeName: 'Spaghetti Bolognese',
-            imageLoc: 'assets/images/spaghetti.png',
+            imageLoc: 'assets/images/spaghetti carbonara.png',
           ),
           RecipeCard(
             recipeName: 'Chicken Curry',
-            imageLoc: 'assets/images/chicken.png',
+            imageLoc: 'assets/images/chicken curry.png',
           ),
           RecipeCard(
-            recipeName: 'Vegan Salad',
-            imageLoc: 'assets/images/grilledsalmon.png',
+            recipeName: 'Salmon Fry',
+            imageLoc: 'assets/images/grilled salmon.png',
           ),
         ],
       ),

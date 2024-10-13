@@ -1,25 +1,23 @@
 import 'package:flutter/material.dart';
-import 'package:recipe_finder/helpers/recipe_service.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:recipe_finder/helpers/recipe_model.dart';
+import 'package:recipe_finder/screens/add_recipe.dart';
 import 'package:recipe_finder/screens/search_screen.dart';
 import '../widgets/recipe_card.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
   final TextEditingController _ingredientController = TextEditingController();
-  RecipeService _recipeService = RecipeService();
 
   @override
   void initState() {
     super.initState();
-    _loadRecipes();
-  }
-
-  Future<void> _loadRecipes() async {
-    await _recipeService.loadRecipes();
   }
 
   @override
@@ -30,6 +28,15 @@ class _HomeScreenState extends State<HomeScreen> {
         centerTitle: true,
         backgroundColor: Colors.greenAccent,
       ),
+      floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.black,
+          child: const Icon(
+            Icons.add,
+            size: 28,
+            color: Colors.white,
+          ),
+          onPressed: () => Navigator.of(context).push(MaterialPageRoute(
+              builder: (context) => const AddRecipeScreen()))),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: SingleChildScrollView(
@@ -79,7 +86,6 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Featured Recipe of the Day Section
   Widget _buildFeaturedRecipe() {
     return Card(
       shape: RoundedRectangleBorder(
@@ -89,9 +95,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: const Column(
         children: [
           ClipRRect(
-            borderRadius:
-                const BorderRadius.vertical(top: Radius.circular(15.0)),
-            child: Image(image: AssetImage("assets/images/grilledsalmon.png")),
+            borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+            child: Image(image: AssetImage("assets/images/grilled salmon.png")),
           ),
           Padding(
             padding: EdgeInsets.all(10.0),
@@ -108,38 +113,40 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  // Horizontal scrollable popular recipes section
   Widget _buildPopularRecipes() {
-    if (RecipeService.recipes.isEmpty) {
-      return CircularProgressIndicator();
-    }
+    return FutureBuilder(
+      future: Hive.openBox<Recipe>('recipes'),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const CircularProgressIndicator();
+        } else {
+          var box = Hive.box<Recipe>('recipes');
+          if (box.values.isEmpty) {
+            return const Text('No popular recipes found');
+          }
 
-    return Container(
-      height: 250,
-      child: ListView(
-        scrollDirection: Axis.horizontal,
-        children: [
-          RecipeCard(
-            recipeName: 'Spaghetti Carbonara',
-            imageLoc: 'assets/images/spaghetti.png',
-          ),
-          RecipeCard(
-            recipeName: 'Chicken Curry',
-            imageLoc: 'assets/images/chicken.png',
-          ),
-          RecipeCard(
-            recipeName: 'Paneer Tikka',
-            imageLoc: 'assets/images/paneer.png',
-          ),
-        ],
-      ),
+          // return Text(box.values.last.name);
+          return SizedBox(
+            height: 250,
+            width: MediaQuery.of(context).size.width,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: box.values.map((recipe) {
+                return RecipeCard(
+                  recipeName: recipe.name,
+                  imageLoc: recipe.imageUrl,
+                );
+              }).toList(),
+            ),
+          );
+        }
+      },
     );
   }
 
   void _searchRecipes() {
     final ingredients = _ingredientController.text;
     if (ingredients.isNotEmpty) {
-      // Placeholder for searching logic - we'll add backend later
       print('Searching recipes with: $ingredients');
     }
   }

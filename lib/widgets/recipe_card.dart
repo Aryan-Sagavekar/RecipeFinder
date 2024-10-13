@@ -17,26 +17,23 @@ class RecipeCard extends StatefulWidget {
 }
 
 class _RecipeCardState extends State<RecipeCard> {
-  RecipeService _recipeService = RecipeService();
   late Recipe _searchResult;
 
   @override
   void initState() {
     super.initState();
-    _fetchRecipe();
   }
 
-  void _fetchRecipe() {
-    setState(() {
-      _searchResult = _recipeService.searchOneRecipe(widget.recipeName);
-    });
+  void _fetchRecipe() async {
+    _searchResult = await RecipeService.searchOneRecipe(widget.recipeName);
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 8.0),
-      width: 200, // Control the width for horizontal scrolling
+      width: 200,
       child: Card(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(15.0),
@@ -46,7 +43,8 @@ class _RecipeCardState extends State<RecipeCard> {
           crossAxisAlignment: CrossAxisAlignment.stretch,
           children: [
             ClipRRect(
-              borderRadius: BorderRadius.vertical(top: Radius.circular(15.0)),
+              borderRadius:
+                  const BorderRadius.vertical(top: Radius.circular(15.0)),
               child: Image(
                 width: 200,
                 height: 150,
@@ -67,6 +65,7 @@ class _RecipeCardState extends State<RecipeCard> {
             ),
             ElevatedButton(
               onPressed: () => {
+                _fetchRecipe(),
                 Navigator.push(
                     context,
                     MaterialPageRoute(
